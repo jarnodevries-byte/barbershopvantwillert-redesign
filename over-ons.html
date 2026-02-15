@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over Ons | Barbershop van Twillert</title>
+    <meta name="description" content="Leer meer over Gerwin van Twillert en zijn passie voor het kappersvak in Bunschoten-Spakenburg.">
+    <link rel="icon" href="https://barbershopvantwillert.nl/wp-content/uploads/2025/05/Barbershop-van-Twillert-150x150.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --gold: #FFF8D4; --gold-accent: #C9A94E; --dark: #0a0a0a; --dark-card: #141414; --dark-surface: #1a1a1a; --text: #e0e0e0; --text-muted: #999; --white: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--dark); color: var(--text); }
+        .navbar { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); box-shadow: 0 2px 30px rgba(0,0,0,0.5); }
+        .navbar .logo img { height: 45px; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { color: var(--white); text-decoration: none; font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+        .hamburger span { width: 28px; height: 2px; background: var(--white); transition: all 0.3s; }
+
+        .page-hero { height: 50vh; display: flex; align-items: center; justify-content: center; position: relative; background: url('https://barbershopvantwillert.nl/wp-content/uploads/2025/05/andrea-donato-MNu0n-3BIKs-unsplash.jpg') center/cover; }
+        .page-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.5), rgba(10,10,10,0.9)); }
+        .page-hero h1 { position: relative; z-index: 2; font-family: 'Poppins', sans-serif; font-size: 3rem; color: var(--white); }
+        .page-hero h1 span { color: var(--gold-accent); }
+
+        .content-section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+        .content-section h2 { font-family: 'Poppins', sans-serif; font-size: 2rem; color: var(--white); margin-bottom: 1rem; }
+        .content-section h2 span { color: var(--gold-accent); }
+        .divider { width: 60px; height: 3px; background: var(--gold-accent); margin: 1rem 0 2rem; }
+        .content-section p { color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; font-size: 1.05rem; }
+        .content-section strong { color: var(--gold); }
+
+        .highlight-box { background: var(--dark-card); border: 1px solid rgba(201,169,78,0.15); border-radius: 16px; padding: 2.5rem; margin: 3rem 0; }
+        .highlight-box h3 { font-family: 'Poppins', sans-serif; color: var(--gold-accent); margin-bottom: 1rem; }
+
+        .btn { display: inline-block; padding: 1rem 2.5rem; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; border-radius: 50px; background: var(--gold-accent); color: var(--dark); border: 2px solid var(--gold-accent); transition: all 0.4s; }
+        .btn:hover { background: transparent; color: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(201,169,78,0.3); }
+
+        footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05); padding: 2rem; text-align: center; }
+        footer p { color: var(--text-muted); font-size: 0.85rem; }
+        footer a { color: var(--gold-accent); text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .nav-links { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background: rgba(10,10,10,0.98); flex-direction: column; padding: 5rem 2rem; transition: right 0.4s; }
+            .nav-links.active { right: 0; }
+            .hamburger { display: flex; }
+            .page-hero h1 { font-size: 2rem; }
+        }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22,1,0.36,1); }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="https://barbershopvantwillert.nl/wp-content/uploads/2025/05/Barbershop-van-Twillert.png" alt="Barbershop van Twillert"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#over-ons">Over Ons</a></li>
+            <li><a href="index.html#prijzen">Prijzen</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="over-ons.html" style="color: var(--gold-accent);">Over Gerwin</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </nav>
+
+    <div class="page-hero">
+        <h1>Over <span>Gerwin</span></h1>
+    </div>
+
+    <div class="content-section">
+        <div class="reveal">
+            <h2>De Man Achter de <span>Schaar</span></h2>
+            <div class="divider"></div>
+            <p>Barbershop van Twillert is een nieuwe eenmanszaak, opgericht door de ambitieuze en gepassioneerde ondernemer <strong>Gerwin van Twillert</strong>. Met ruim 5 jaar ervaring in het herenvak en een grote passie voor het kappersvak, besloot Gerwin in 2025 zijn droom waar te maken: een eigen barbershop in Bunschoten-Spakenburg waarin <strong>kwaliteit</strong> en <strong>klanttevredenheid</strong> centraal staan.</p>
+            <p>Bij Barbershop van Twillert draait alles om vakmanschap, stijl en persoonlijke aandacht. Elke klant die in de stoel plaatsneemt, krijgt een behandeling op maat — met oog voor detail en de nieuwste technieken.</p>
+        </div>
+
+        <div class="highlight-box reveal">
+            <h3>✂️ Waarom Barbershop van Twillert?</h3>
+            <p>Bij iedere service zit het harsen van de neus en oren bij de prijs inbegrepen. Daarnaast bieden wij ook styling en advies op maat. Alles is mogelijk op aanvraag, dus neem gerust contact met ons op voor vragen of speciale wensen.</p>
+        </div>
+
+        <div class="reveal" style="text-align:center; margin-top: 3rem;">
+            <a href="tel:+31657290364" class="btn">📞 Bel Nu: 06 57290364</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Barbershop van Twillert — Bunschoten-Spakenburg</p>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => { document.getElementById('navLinks').classList.toggle('active'); });
+        document.querySelectorAll('.nav-links a').forEach(a => { a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('active')); });
+        const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
