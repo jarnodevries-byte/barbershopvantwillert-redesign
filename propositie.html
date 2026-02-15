@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Propositie | Professionele Website voor uw Bedrijf</title>
+    <meta name="description" content="Een professionele website voor uw bedrijf. Geen grote investering vooraf — wij bouwen, hosten en onderhouden alles.">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-light: #3B82F6;
+            --primary-dark: #1D4ED8;
+            --accent: #10B981;
+            --accent-dark: #059669;
+            --dark: #0F172A;
+            --dark-card: #1E293B;
+            --dark-surface: #334155;
+            --text: #E2E8F0;
+            --text-muted: #94A3B8;
+            --white: #ffffff;
+            --gold: #F59E0B;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(ellipse at 30% 20%, rgba(37,99,235,0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 80%, rgba(16,185,129,0.1) 0%, transparent 60%),
+                        var(--dark);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="g" width="10" height="10" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="0.5" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect fill="url(%23g)" width="100" height="100"/></svg>');
+            pointer-events: none;
+        }
+
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+
+        .badge {
+            display: inline-block;
+            background: rgba(37,99,235,0.15);
+            border: 1px solid rgba(37,99,235,0.3);
+            color: var(--primary-light);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.7;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37,99,235,0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--dark-surface);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary-light);
+            color: var(--primary-light);
+        }
+
+        /* SECTIONS */
+        section { padding: 5rem 2rem; }
+
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--primary-light);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-sub {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        /* PRICING CARDS */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 2.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(37,99,235,0.2);
+        }
+
+        .pricing-card.featured {
+            border-color: var(--primary);
+            background: linear-gradient(180deg, rgba(37,99,235,0.08) 0%, var(--dark-card) 100%);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            right: 24px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-card .subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .price .currency { font-size: 1.5rem; font-weight: 600; color: var(--text-muted); }
+        .price .amount {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        .price .period { color: var(--text-muted); font-size: 0.95rem; }
+
+        .price-note {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.6rem 0;
+            font-size: 0.95rem;
+            color: var(--text);
+        }
+
+        .features-list .icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        .features-list .icon.check {
+            background: rgba(16,185,129,0.15);
+            color: var(--accent);
+        }
+
+        .pricing-card .btn { width: 100%; justify-content: center; }
+
+        /* WHAT YOU GET */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: var(--dark-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: rgba(37,99,235,0.2);
+            transform: translateY(-2px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            background: rgba(37,99,235,0.1);
+        }
+
+        .feature-card h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* PROCESS */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+
+        .step-number {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.2rem;
+        }
+
+        .step h4 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .step p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* FAQ */
+        .faq-list { max-width: 700px; margin: 0 auto; }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 1.5rem 0;
+        }
+
+        .faq-q {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.6rem;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .faq-a {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(37,99,235,0.05) 50%, transparent 100%);
+        }
+
+        .cta-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 500px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        /* GUARANTEE */
+        .guarantee-box {
+            background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(37,99,235,0.08));
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 3rem auto 0;
+        }
+
+        .guarantee-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .guarantee-box p {
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            section { padding: 3rem 1.5rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .hero-cta { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">🚀 Professionele Websites voor het MKB</div>
+            <h1>Een website die klanten <span class="highlight">aantrekt</span>, niet afschrikt</h1>
+            <p>Wij bouwen een moderne, professionele website voor uw bedrijf. Geen grote investering vooraf — u betaalt alleen een vast maandbedrag. Alles inbegrepen.</p>
+            <div class="hero-cta">
+                <a href="#prijzen" class="btn btn-primary">💰 Bekijk Prijzen</a>
+                <a href="#werkwijze" class="btn btn-outline">Hoe werkt het?</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WAT KRIJGT U -->
+    <section id="features">
+        <div class="container">
+            <span class="section-label">Alles Inbegrepen</span>
+            <h2 class="section-title">Wat krijgt u?</h2>
+            <p class="section-sub">Geen verborgen kosten, geen technisch gedoe. Wij regelen alles van A tot Z.</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Professioneel Design</h4>
+                    <p>Een op maat gemaakte website die past bij uw merk. Modern, snel, en mobielvriendelijk.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h4>Domeinnaam</h4>
+                    <p>Uw eigen .nl domeinnaam inbegrepen. Wij regelen de registratie en technische instellingen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h4>E-mail Hosting</h4>
+                    <p>Professioneel e-mailadres op uw eigen domein. info@uwbedrijf.nl — dat maakt indruk.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Snelle Hosting</h4>
+                    <p>Razendsnelle, betrouwbare hosting met 99.9% uptime. Uw site is altijd bereikbaar.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>SSL & Beveiliging</h4>
+                    <p>Gratis SSL-certificaat en beveiligingsupdates. Uw bezoekers zien het groene slotje.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛠️</div>
+                    <h4>Onderhoud & Updates</h4>
+                    <p>Wij houden uw website up-to-date. Kleine wijzigingen? Gewoon even appen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRIJZEN -->
+    <section id="prijzen" style="background: linear-gradient(180deg, transparent 0%, rgba(37,99,235,0.03) 50%, transparent 100%);">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Transparante Prijzen</span>
+                <h2 class="section-title">Eén prijs, alles inbegrepen</h2>
+                <p class="section-sub" style="margin-left: auto; margin-right: auto;">Geen verrassingen. Geen opstartkosten. Gewoon een vast bedrag per maand.</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- WEBSITE PAKKET -->
+                <div class="pricing-card">
+                    <h3>Website Pakket</h3>
+                    <p class="subtitle">Alles wat u nodig heeft</p>
+                    <div class="price">
+                        <span class="currency">€</span>
+                        <span class="amount">150</span>
+                        <span class="period">/ maand</span>
+                    </div>
+                    <p class="price-note">Minimaal 12 maanden · Website is gratis</p>
+                    <ul class="features-list">
+                        <li><span class="icon check">✓</span> Professionele website op maat</li>
+                        <li><span class="icon check">✓</span> 1 domeinnaam (.nl) inbegrepen</li>
+                        <li><span class="icon check">✓</span> E-mail hosting inbegrepen</li>
+                        <li><span class="icon check">✓</span> Snelle & veilige hosting</li>
+                        <li><span class="icon check">✓</span> SSL-certificaat</li>
+                        <li><span class="icon check">✓</span> Onderhoud & kleine wijzigingen</li>
+                        <li><span class="icon check">✓</span> Mobielvriendelijk design</li>
+                        <li><span class="icon check">✓</span> Persoonlijke ondersteuning</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline">Meer Informatie →</a>
+                </div>
+
+                <!-- WEBSITE + SEO -->
+                <div class="pricing-card featured">
+                    <span class="popular-badge">⭐ MEEST GEKOZEN</span>
+                    <h3>Website + SEO Pakket</h3>
+                    <p class="subtitle">Gevonden worden in Google</p>
+                    <div class="price">
+                        <span class="currency">€</span>
+                        <span class="amount">200</span>
+                        <span class="period">/ maand</span>
+                    </div>
+                    <p class="price-note">Minimaal 12 maanden · Website is gratis</p>
+                    <ul class="features-list">
+                        <li><span class="icon check">✓</span> <strong>Alles uit Website Pakket</strong></li>
+                        <li><span class="icon check">✓</span> SEO & geo-optimalisatie</li>
+                        <li><span class="icon check">✓</span> Wiki met 25 artikelen</li>
+                        <li><span class="icon check">✓</span> 1 blogpost per maand</li>
+                        <li><span class="icon check">✓</span> Lokale vindbaarheid boost</li>
+                        <li><span class="icon check">✓</span> Google Mijn Bedrijf optimalisatie</li>
+                        <li><span class="icon check">✓</span> Maandelijkse rapportage</li>
+                        <li><span class="icon check">✓</span> Voorrang op support</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Start Vandaag →</a>
+                </div>
+            </div>
+
+            <div class="guarantee-box">
+                <h3>🛡️ Geen Risico Garantie</h3>
+                <p>Wij bouwen eerst uw nieuwe website. Pas als u 100% tevreden bent, gaat het contract in. Niet tevreden? Dan betaalt u niets. Zo simpel is het.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WERKWIJZE -->
+    <section id="werkwijze">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">In 4 Stappen</span>
+                <h2 class="section-title">Hoe werkt het?</h2>
+                <p class="section-sub" style="margin-left: auto; margin-right: auto;">Van eerste contact tot een live website in minder dan een week.</p>
+            </div>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Gratis Gesprek</h4>
+                    <p>We bespreken uw wensen, bekijken uw huidige site, en maken een plan.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Design & Bouw</h4>
+                    <p>Wij bouwen uw nieuwe website. U hoeft niets te doen — wij regelen alles.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Uw Goedkeuring</h4>
+                    <p>U bekijkt het resultaat. Feedback? We passen het aan tot u tevreden bent.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Live!</h4>
+                    <p>Uw nieuwe website gaat live. Wij zorgen voor hosting, updates en support.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="background: linear-gradient(180deg, transparent 0%, rgba(37,99,235,0.03) 50%, transparent 100%);">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Veelgestelde Vragen</span>
+                <h2 class="section-title">Nog vragen?</h2>
+            </div>
+
+            <div class="faq-list" style="margin-top: 2rem;">
+                <div class="faq-item">
+                    <div class="faq-q">Waarom is de website gratis?</div>
+                    <div class="faq-a">Wij investeren in een langetermijnrelatie. Door de maandelijkse kosten laag te houden, is een professionele website voor iedereen bereikbaar. Geen grote investering vooraf — wij verdienen aan de samenwerking.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Wat gebeurt er na 12 maanden?</div>
+                    <div class="faq-a">Na de minimale looptijd van 12 maanden loopt het contract maandelijks door. U kunt op elk moment opzeggen met een maand opzegtermijn.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Kan ik wijzigingen laten doorvoeren?</div>
+                    <div class="faq-a">Ja! Kleine wijzigingen (teksten, foto's, openingstijden) zijn inbegrepen. Gewoon een berichtje sturen en wij passen het aan.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Wat houdt het SEO-pakket in?</div>
+                    <div class="faq-a">We schrijven 25 wiki-artikelen die geoptimaliseerd zijn voor zoekmachines en uw regio. Daarnaast plaatsen we elke maand een blogpost. Dit zorgt ervoor dat uw bedrijf beter gevonden wordt in Google.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Wat voor e-mail krijg ik erbij?</div>
+                    <div class="faq-a">Een professioneel e-mailadres op uw eigen domein, zoals info@uwbedrijf.nl. Werkt met elke e-mail app op uw telefoon en computer.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">Ik heb al een website. Kan dat?</div>
+                    <div class="faq-a">Absoluut. Wij bouwen uw nieuwe site en regelen de overstap. Uw huidige website blijft online tot de nieuwe klaar is.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="contact">
+        <h2>Klaar voor een website die wérkt?</h2>
+        <p>Neem vrijblijvend contact op. We laten u graag zien wat we voor uw bedrijf kunnen betekenen.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="tel:+31XXXXXXXXX" class="btn btn-primary">📞 Bel Ons</a>
+            <a href="mailto:info@example.nl" class="btn btn-outline">✉️ Mail Ons</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2025 · Professionele Websites voor het MKB · Bunschoten-Spakenburg</p>
+    </footer>
+
+</body>
+</html>
